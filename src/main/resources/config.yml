@@ -1,0 +1,7 @@
+# ChatLimit Config
+version: "1.0.0"
+
+# prefixを設定します
+# カラーコードが使用可能です
+# 表示形式: prefix » msg
+prefix: "&c&lChatLimit"
