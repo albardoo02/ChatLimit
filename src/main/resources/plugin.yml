@@ -23,6 +23,13 @@ permissions:
       ChatLimit.command.version: true
     description: ChatLimitの全権限
     default: op
+  ChatLimit.command.*:
+    children:
+      ChatLimit.command.help: true
+      ChatLimit.command.reload: true
+      ChatLimit.command.version: true
+    description: ChatLimitのコマンドの全権限
+    default: op
   ChatLimit.chat.bypass:
     description: チャット制限回避
     default: op
