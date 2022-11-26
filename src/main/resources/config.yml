@@ -14,7 +14,7 @@ CommandToOP: "&d%player &fがNGコマンドを使用しました"
 
 # キック理由
 # \nで改行をします
-Reason: "&c&lChatLimit &8&l» &7あなたはKickされました!\n\n\n&c理由 &8&l» &7NGワードが検出されたため\n\n&7お問い合わせ:\n&eDiscord &8&l» &c&nhttps://discord.com/"
+Reason: "&7あなたはKickされました!"
 
 # NGワードを置き換えるメッセージ
 ReplaceMessage: "*****"
