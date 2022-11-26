@@ -1,7 +1,28 @@
 # ChatLimit Config
-version: "1.0.0"
+version: "1.1.0"
 
 # prefixを設定します
 # カラーコードが使用可能です
 # 表示形式: prefix » msg
 prefix: "&c&lChatLimit"
+
+# NGワード検出時,OPにメッセージを送信
+MessageToOP: "&d%player &fがNGワードを発言しました"
+
+# NGコマンド検出時,OPにメッセージを送信
+CommandToOP: "&d%player &fがNGコマンドを使用しました"
+
+# キック理由
+# \nで改行をします
+Reason: "&c&lChatLimit &8&l» &7あなたはKickされました!\n\n\n&c理由 &8&l» &7NGワードが検出されたため\n\n&7お問い合わせ:\n&eDiscord &8&l» &c&nhttps://discord.com/"
+
+# NGワードを置き換えるメッセージ
+ReplaceMessage: "*****"
+
+Message:
+  help:
+    - '&6コマンドヘルプ: &f/chatlimit'
+    - '&6詳細: &fChatLimitのコマンド'
+    - '&6使用方法: &f/chatlimit <command>'
+    - '&6エイリアス: &f/chat , /cl'
+

@@ -9,6 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.List;
+
 public class CommandEvent implements Listener {
 
     ChatLimit plugin;
@@ -18,18 +20,19 @@ public class CommandEvent implements Listener {
 
     @EventHandler
     public void onCommandPreprocess(PlayerCommandPreprocessEvent event){
-        String message = event.getMessage();
-        String[] array = message.split(" ");
         Player player = event.getPlayer();
-        if(player.hasPermission("chat.command.bypass")){
+        String reason = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Reason"));
+        if(player.hasPermission("ChatLimit.command.bypass")){
             return;
         }
-        if(array[0].equalsIgnoreCase("/gamemode")) {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&eこのコマンドは禁止されています"));
-            Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getMessageConfig().getString("CommandToOP").replace("%player", player.getName())));
-            Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.prefix + " &8&l» &r"+ plugin.getMessageConfig().getString("CommandToOP").replace("%player", player.getName()))));
+        List<String> cmd = plugin.getMessageConfig().getStringList("KickCommands");
+        for(String command : cmd){
+            if(event.getMessage().equalsIgnoreCase("/" + command)){
+                event.setCancelled(true);
+                player.kickPlayer(reason);
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName())));
+                Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName()))));
+            }
         }
     }
 }
