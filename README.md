@@ -13,14 +13,19 @@ Configで設定したNGワードを発言した際、プレイヤーをキック
 
 5：Plugmanを利用してリロードするか、サーバーを再起動する。
 
-
+## コマンド
+`/chatlimit help`: ChatLimitのヘルプ
+`/chatlimit reload`: Configの再読み込み
+`/chatlimit version`: バージョンの表示
 
 ## 権限 / Permission
-- `chatlimit.*`: ChatLimitの全権限
+- `ChatLimit.*`: ChatLimitの全権限
 
-- `chatlimit.chat.bypass`: チャットの制限がなくなります
+- `ChatLimit.command.*`: ChatLimitのコマンド全権限
+
+- `ChatLimit.chat.bypass`: チャットの制限がなくなります
   
-- `chatlimit.command.bypass`: コマンドの制限がなくなります(ほぼ未実装)
+- `ChatLimit.command.bypass`: コマンドの制限がなくなります(ほぼ未実装)
 
 ## ライセンス / License
 [MIT License](LICENSE)
