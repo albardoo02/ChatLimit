@@ -11,12 +11,16 @@ Configで設定したNGワードを発言した際、プレイヤーをキック
 
 4：ChatLimitフォルダ内にあるmessage.ymlでNGワードを設定する
 
-5：Plugmanを利用してリロードするか、サーバーを再起動する。
+5：`/chatlimit reload`でConfigを再読み込みするか、サーバーを再起動する。
 
 ## コマンド
 `/chatlimit help`: ChatLimitのヘルプ
+
 `/chatlimit reload`: Configの再読み込み
+
 `/chatlimit version`: バージョンの表示
+
+エイリアス: `/chat , /cl`
 
 ## 権限 / Permission
 - `ChatLimit.*`: ChatLimitの全権限
