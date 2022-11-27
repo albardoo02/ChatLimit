@@ -31,8 +31,8 @@ public class ChatEvent implements Listener {
             if (event.getMessage().contains(message)) {
                 player.kickPlayer(reason);
                 event.setMessage(replace);
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + "&8&l» &r" + plugin.getMessageConfig().getString("MessageToOP").replace("%player",player.getName())));
-                Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» &r" + plugin.getMessageConfig().getString("MessageToOP").replace("%player",player.getName()))));
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + "&8&l» &r" + plugin.getMessageConfig().getString("MessageToOP").replace("%player",player.getName()).replace("%message",event.getMessage())));
+                Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» &r" + plugin.getMessageConfig().getString("MessageToOP").replace("%player",player.getName()).replace("%message",event.getMessage()))));
             }
         }
     }
