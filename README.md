@@ -1,4 +1,6 @@
 # ChatLimit
+![image](https://user-images.githubusercontent.com/86724649/204301794-41a28f24-22fb-4eaf-a205-c4fe67415dc8.png)
+
 ## 概要
 Configで設定したNGワードを発言した際、プレイヤーをキックします
 
