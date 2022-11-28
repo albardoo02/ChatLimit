@@ -34,6 +34,7 @@ public class PlayerChat implements Listener {
                         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("MessageToOP.message").replace("%player",event.getPlayer().getName()).replace("%message",event.getMessage())));
                     }
                 }
+                event.setMessage(replace);
             }
         }
     }
