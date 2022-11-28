@@ -3,7 +3,8 @@ KickWords:
   - 'あいうえお'
   - 'かきくけこ'
 
-# NGコマンド設定
+# NGコマンド追加
 KickCommands:
   - 'gamemode'
   - 'kill'
+  - 'fill'

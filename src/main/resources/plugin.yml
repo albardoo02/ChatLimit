@@ -1,9 +1,9 @@
 name: ChatLimit
-version: '1.1.0'
+version: '1.2.0'
 main: com.github.albardoo02.ChatLimit
 api-version: 1.15
 authors: [ albardoo02 ]
-description: チャット制限
+description: チャット制限プラグイン
 website: https://github.com/albardoo02/ChatLimit
 
 commands:
@@ -12,6 +12,7 @@ commands:
     aliases:
       - chat
       - cl
+      - limit
 
 permissions:
   ChatLimit.*:
@@ -45,5 +46,3 @@ permissions:
   ChatLimit.command.version:
     description: versionコマンド権限
     default: op
-
-

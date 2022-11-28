@@ -1,8 +1,8 @@
 package com.github.albardoo02;
 
 import com.github.albardoo02.command.ChatLimitCommand;
-import com.github.albardoo02.listener.ChatEvent;
-import com.github.albardoo02.listener.CommandEvent;
+import com.github.albardoo02.listener.PlayerChat;
+import com.github.albardoo02.listener.PlayerCommandPreprocess;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 public final class ChatLimit extends JavaPlugin {
+
     public String prefix = ChatColor.translateAlternateColorCodes('&',getConfig().getString("prefix"));
 
     private File MessageConfigFile;
@@ -20,15 +21,14 @@ public final class ChatLimit extends JavaPlugin {
     @Override
     public void onEnable() {
         super.onEnable();
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "&bChatLimit &3v" + getConfig().getString("version")));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "&eLoading Config..."));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "&aSuccess!"));
-
+        getLogger().info(ChatColor.translateAlternateColorCodes('&',"&bChatLimit &3v" + getConfig().getString("version")));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&',"NGワード検出時にOPに通知: &a" + getConfig().getString("MessageToOP.Enabled")));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&',"NGコマンド検出時にOPに通知: &a" + getConfig().getString("CommandToOP.Enabled")));
         this.saveDefaultConfig();
         createMessageConfig();
 
-        getServer().getPluginManager().registerEvents(new ChatEvent(this),this);
-        getServer().getPluginManager().registerEvents(new CommandEvent(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerChat(this),this);
+        getServer().getPluginManager().registerEvents(new PlayerCommandPreprocess(this), this);
 
         getCommand("chatlimit").setExecutor(new ChatLimitCommand(this));
     }
