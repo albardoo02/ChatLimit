@@ -30,8 +30,8 @@ public class CommandEvent implements Listener {
             if(event.getMessage().equalsIgnoreCase("/" + command)){
                 event.setCancelled(true);
                 player.kickPlayer(reason);
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName())));
-                Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName()))));
+                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName()).replace("%command",event.getMessage())));
+                Bukkit.getOperators().stream().filter(OfflinePlayer::isOnline).forEach(p -> p.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.prefix + " &8&l» &r" + plugin.getConfig().getString("CommandToOP").replace("%player", player.getName()).replace("%command",event.getMessage()))));
             }
         }
     }
