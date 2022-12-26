@@ -30,11 +30,11 @@ public class PlayerCommandPreprocess implements Listener {
         if (player.hasPermission("ChatLimit.command.bypass")) {
             return;
         }
-        List<String> cmd = plugin.getWordConfig().getStringList("Command");
+        List<String> cmd = plugin.data.getConfig().getStringList("Command");
         for (String command : cmd) {
             String reason = ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("Command.Kick.Reason").replace("%player",player.getName()).replace("%command","/" + command));
-            String notice = ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» "+ plugin.getConfig().getString("Command.SendToOP.Notice").replace("%player",player.getName()).replace("%command","/" + command));
-            String console = ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» "+ plugin.getConfig().getString("Command.SendToConsole.Notice").replace("%player",player.getName()).replace("%command","/" + command));
+            String notice = ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» "+ plugin.getConfig().getString("Command.SendToOP.Notice").replace("%player",player.getName()).replace("%command","/" + command));
+            String console = ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» "+ plugin.getConfig().getString("Command.SendToConsole.Notice").replace("%player",player.getName()).replace("%command","/" + command));
             if (event.getMessage().equalsIgnoreCase("/" + command)) {
                 if (!plugin.getConfig().getBoolean("Command.SendToOP.Enabled")) {
                     return;

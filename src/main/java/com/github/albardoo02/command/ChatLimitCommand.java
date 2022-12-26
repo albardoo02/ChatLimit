@@ -2,16 +2,25 @@ package com.github.albardoo02.command;
 
 import com.github.albardoo02.ChatLimit;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-public class ChatLimitCommand implements CommandExecutor {
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ChatLimitCommand implements CommandExecutor, TabCompleter {
 
     ChatLimit plugin;
     public ChatLimitCommand(ChatLimit plugin){
@@ -31,7 +40,10 @@ public class ChatLimitCommand implements CommandExecutor {
             if (sender.hasPermission("chatlimit.command.reload")) {
                 if(args[0].equalsIgnoreCase("reload")) {
                     plugin.reloadConfig();
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» &rConfigを再読み込みしました"));
+                    plugin.saveConfig();
+                    plugin.data.reloadConfig();
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» &rConfigを再読み込みしました"));
+                    Bukkit.getLogger().info(ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» &rConfigを再読み込みしました"));
                 }
             }
             if (sender.hasPermission("chatlimit.command.version")) {
@@ -52,9 +64,32 @@ public class ChatLimitCommand implements CommandExecutor {
                 }
             }
             else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» &cあなたには権限がありません!"));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» &cあなたには権限がありません!"));
             }
         }
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if(command.getName().equalsIgnoreCase("chatlimit")) {
+            if (args.length <= 1) {
+                if (args[0].length() == 0) {
+                    return Arrays.asList("help", "reload", "version");
+                }
+                else {
+                    if ("help".startsWith(args[0]) && "reload".startsWith(args[0]) && "version".startsWith(args[0])) {
+                        return Arrays.asList("help", "reload", "version");
+                    } else if ("help".startsWith(args[0])) {
+                        return Collections.singletonList("help");
+                    } else if ("reload".startsWith(args[0])) {
+                        return Collections.singletonList("reload");
+                    } else if ("version".startsWith(args[0])) {
+                        return Collections.singletonList("version");
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

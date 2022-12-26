@@ -4,21 +4,19 @@ import com.github.albardoo02.command.ChatLimitCommand;
 import com.github.albardoo02.listener.PlayerChat;
 import com.github.albardoo02.listener.PlayerCommandPreprocess;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public final class ChatLimit extends JavaPlugin {
+
+    public DataManager data;
+
+
     public String version = getDescription().getVersion();
-    public String prefix = ChatColor.translateAlternateColorCodes('&',getConfig().getString("message.prefix"));
-
-
-    private File WordConfigFile;
-    private FileConfiguration WordConfig;
+    public String getPrefix() {
+        return getConfig().getString(ChatColor.translateAlternateColorCodes('&',"prefix"));
+    }
 
     @Override
     public void onEnable() {
@@ -38,8 +36,9 @@ public final class ChatLimit extends JavaPlugin {
         }
         getLogger().info("");
 
+        this.data = new DataManager(this);
+
         saveDefaultConfig();
-        createWordConfig();
         getServer().getPluginManager().registerEvents(new PlayerChat(this),this);
         getServer().getPluginManager().registerEvents(new PlayerCommandPreprocess(this),this);
 
@@ -51,24 +50,4 @@ public final class ChatLimit extends JavaPlugin {
         getLogger().info("プラグインが停止しました");
         getLogger().info("Goodbye!");
     }
-
-    public FileConfiguration getWordConfig() {
-        return this.WordConfig;
-    }
-
-    private void createWordConfig() {
-        WordConfigFile = new File(getDataFolder(), "word.yml");
-        if (!WordConfigFile.exists()) {
-            WordConfigFile.getParentFile().mkdirs();
-            saveResource("word.yml", false);
-        }
-
-        WordConfig = new YamlConfiguration();
-        try {
-            WordConfig.load(WordConfigFile);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

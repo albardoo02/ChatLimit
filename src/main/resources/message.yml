@@ -1,0 +1,10 @@
+# NGワード設定
+KickWords:
+  - 'あいうえお'
+  - 'かきくけこ'
+
+# NGコマンド追加
+KickCommands:
+  - 'gamemode'
+  - 'kill'
+  - 'fill'

@@ -6,8 +6,7 @@
 # チャットでのprefixを設定します
 # カラーコードが使用可能です
 # 表示形式: prefix » message
-message:
-  prefix: "&c&lChatLimit"
+prefix: "&c&lChatLimit"
 
 # チャット制限の設定 (trueで有効、falseで無効)
 # Enabled: 機能を有効にするかどうか
