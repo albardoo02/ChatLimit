@@ -1,6 +1,7 @@
 # ChatLimit v1.3.0 Configuration
 # プレイヤー名: %player
 # NGワード: %word
+# NGコマンド: %command
 
 # チャットでのprefixを設定します
 # カラーコードが使用可能です
@@ -8,7 +9,13 @@
 message:
   prefix: "&c&lChatLimit"
 
-# チャットの設定
+# チャット制限の設定 (trueで有効、falseで無効)
+# Enabled: 機能を有効にするかどうか
+# Cancel: メッセージの送信をキャンセルするかどうか
+# Kick: プレイヤーをキックするかどうか
+#  Reason: キック理由
+# SendToOP: OPに通知するかどうか
+# SendToConsole: コンソールにログを残すかどうか
 Chat:
   Enabled: true
   Cancel:
@@ -23,6 +30,13 @@ Chat:
     Enabled: true
     Notice: "&d%player &rがNGワード &e%word &rを発言しました"
 
+# コマンド制限の設定 (trueで有効、falseで無効)
+# Enabled: 機能を有効にするかどうか
+# Cancel: メッセージの送信をキャンセルするかどうか
+# Kick: プレイヤーをキックするかどうか
+#  Reason: キック理由
+# SendToOP: OPに通知するかどうか
+# SendToConsole: コンソールにログを残すかどうか
 Command:
   Enabled: true
   Cancel:
