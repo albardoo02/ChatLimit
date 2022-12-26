@@ -1,5 +1,5 @@
 name: ChatLimit
-version: '1.2.0'
+version: 1.3.0
 main: com.github.albardoo02.ChatLimit
 api-version: 1.15
 authors: [ albardoo02 ]
@@ -8,11 +8,13 @@ website: https://github.com/albardoo02/ChatLimit
 
 commands:
   chatlimit:
-    description: コマンド
+    description: ChatLimitコマンド
     aliases:
       - chat
-      - cl
       - limit
+      - cl
+      - chatl
+      - climit
 
 permissions:
   ChatLimit.*:
@@ -20,16 +22,9 @@ permissions:
       ChatLimit.chat.bypass: true
       ChatLimit.command.bypass: true
       ChatLimit.command.help: true
-      ChatLimit.command.reload: true
       ChatLimit.command.version: true
+      ChatLimit.command.reload: true
     description: ChatLimitの全権限
-    default: op
-  ChatLimit.command.*:
-    children:
-      ChatLimit.command.help: true
-      ChatLimit.command.reload: true
-      ChatLimit.command.version: true
-    description: ChatLimitのコマンドの全権限
     default: op
   ChatLimit.chat.bypass:
     description: チャット制限回避
@@ -38,11 +33,11 @@ permissions:
     description: コマンド制限回避
     default: op
   ChatLimit.command.help:
-    description: helpコマンド権限
-    default: op
-  ChatLimit.command.reload:
-    description: reloadコマンド権限
+    description: helpコマンド
     default: op
   ChatLimit.command.version:
-    description: versionコマンド権限
+    description: versionコマンド
+    default: op
+  ChatLimit.command.reload:
+    description: reloadコマンド
     default: op

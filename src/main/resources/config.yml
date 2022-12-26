@@ -1,32 +1,38 @@
-# ChatLimit Config
-version: "1.2.0"
+# ChatLimit v1.3.0 Configuration
+# プレイヤー名: %player
+# NGワード: %word
 
-# prefixを設定します
+# チャットでのprefixを設定します
 # カラーコードが使用可能です
-# 表示形式: prefix » msg
-prefix: "&c&lChatLimit"
+# 表示形式: prefix » message
+message:
+  prefix: "&c&lChatLimit"
 
-# NGワード検出時,OPにメッセージを送信
-# プレイヤー名: %player
-# NGワード: %message
-MessageToOP:
+# チャットの設定
+Chat:
   Enabled: true
-  message: "&d%player &fがNGワード &e%message &fを発言しました"
+  Cancel:
+    Enabled: true
+  Kick:
+    Enabled: true
+    Reason: "あなたはきっくされました！"
+  SendToOP:
+    Enabled: true
+    Notice: "&d%player &rがNGワードを発言しました"
+  SendToConsole:
+    Enabled: true
+    Notice: "&d%player &rがNGワード &e%word &rを発言しました"
 
-# NGコマンド検出時,OPにメッセージを送信
-# プレイヤー名: %player
-# NGコマンド: %command
-CommandToOP:
+Command:
   Enabled: true
-  message: "&d%player &fがNGコマンド &e%command &fを使用しました"
-
-# NGワードを置き換えるメッセージ
-ReplaceMessage: "*****"
-
-Message:
-  help:
-    - '&6コマンドヘルプ: &f/chatlimit'
-    - '&6詳細: &fChatLimitのコマンド'
-    - '&6使用方法: &f/chatlimit <command>'
-    - '&6エイリアス: &f/chat , / limit , /cl'
-
+  Cancel:
+    Enabled: true
+  Kick:
+    Enabled: true
+    Reason: "あなたはきっくされました！"
+  SendToOP:
+    Enabled: true
+    Notice: "&d%player &rがNGコマンドを実行しました"
+  SendToConsole:
+    Enabled: true
+    Notice: "&d%player &rがNGコマンド &e%command &rを実行しました"
