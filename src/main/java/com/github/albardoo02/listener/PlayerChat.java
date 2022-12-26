@@ -25,15 +25,15 @@ public class PlayerChat implements Listener {
         final Player player = event.getPlayer();
         String message = event.getMessage();
         String reason = ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("Chat.Kick.Reason").replace("%player",player.getName()).replace("%word",message));
-        String notice = ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» "+ plugin.getConfig().getString("Chat.SendToOP.Notice").replace("%player",player.getName()).replace("%word",message));
-        String console = ChatColor.translateAlternateColorCodes('&',plugin.prefix + " &8&l» "+ plugin.getConfig().getString("Chat.SendToConsole.Notice").replace("%player",player.getName()).replace("%word",message));
+        String notice = ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» "+ plugin.getConfig().getString("Chat.SendToOP.Notice").replace("%player",player.getName()).replace("%word",message));
+        String console = ChatColor.translateAlternateColorCodes('&',plugin.getPrefix() + " &8&l» "+ plugin.getConfig().getString("Chat.SendToConsole.Notice").replace("%player",player.getName()).replace("%word",message));
         if (!plugin.getConfig().getBoolean("Chat.Enabled")){
             return;
         }
         if (player.hasPermission("ChatLimit.chat.bypass")) {
             return;
         }
-        List<String> msg = plugin.getWordConfig().getStringList("Word");
+        List<String> msg = plugin.data.getConfig().getStringList("Word");
         for (String word : msg){
             if (message.contains(word)) {
                 Bukkit.getScheduler().runTask(plugin, new Runnable() {
