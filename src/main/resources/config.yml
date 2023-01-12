@@ -12,7 +12,7 @@ prefix: "&c&lChatLimit"
 # Enabled: 機能を有効にするかどうか
 # Cancel: メッセージの送信をキャンセルするかどうか
 # Kick: プレイヤーをキックするかどうか
-#  Reason: キック理由
+# Reason: キック理由
 # SendToOP: OPに通知するかどうか
 # SendToConsole: コンソールにログを残すかどうか
 Chat:
@@ -33,7 +33,7 @@ Chat:
 # Enabled: 機能を有効にするかどうか
 # Cancel: メッセージの送信をキャンセルするかどうか
 # Kick: プレイヤーをキックするかどうか
-#  Reason: キック理由
+# Reason: キック理由
 # SendToOP: OPに通知するかどうか
 # SendToConsole: コンソールにログを残すかどうか
 Command:
