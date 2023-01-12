@@ -34,6 +34,7 @@ Configで設定したNGワードを発言した際、プレイヤーをキック
 ### コマンド制限
 - `ChatLimit.command.bypass`: コマンドの制限がなくなります
 
+### コマンド権限
 - `ChatLimit.command.*`: ChatLimitコマンドの全権限
 
 - `ChatLimit.command.help`: helpコマンドの権限
